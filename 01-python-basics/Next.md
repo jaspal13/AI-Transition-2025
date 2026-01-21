@@ -1,0 +1,2 @@
+- Write one simple class with __init__ and one method
+- Write 3 list comprehension examples in one file
