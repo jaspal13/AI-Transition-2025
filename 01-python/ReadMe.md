@@ -7,3 +7,5 @@ This contains 1 Jupyter notebook with the below examples
 - Dictionaries + Sets
 - Try/except
 - File handling - read and write to files
+- Imperative vs pythonic way of writing code
+- Taking user input
