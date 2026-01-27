@@ -10,3 +10,4 @@ This contains 1 Jupyter notebook with the below examples
 - Imperative vs pythonic way of writing code
 - Taking user input
 - Modules & imports
+- Dictionary + List comprehension
