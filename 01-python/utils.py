@@ -27,3 +27,44 @@ def enrich_people_with_age_group(people):
         }
         for p in people
     ]
+
+def build_age_group_lookup(people):
+    """
+    Returns a dict mapping name -> age_group
+    """
+    return {
+        p["name"]: age_group(p["age"])
+        for p in people
+    }
+
+def prepare_people_data(people):
+    """
+    High-level data preparation pipeline.
+    Returns enriched_people, lookup
+    """
+    enriched = enrich_people_with_age_group(people)
+    lookup = build_age_group_lookup(people)
+    return enriched, lookup
+
+def prepare_people_data_validated(people):
+    """
+    Validates and prepares people data.
+
+    Returns:
+      valid_people: list of enriched people dicts
+      errors: list of error messages
+    """
+    valid_people, errors = [],[]
+    for idx, p in enumerate(people):
+        if "name" not in p or "age" not in p:
+            errors.append(f"Index {idx}: missing required fields")
+            continue
+        if not isinstance(p["age"],int) or p["age"]<0:
+            errors.append(f"Index {idx}: Age is invalid")
+        enriched_person = {
+            "name":p["name"],
+            "age":p["age"],
+            "age_group":age_group(p["age"])
+        }
+        valid_people.append(enriched_person)
+    return valid_people, errors
