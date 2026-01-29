@@ -68,3 +68,4 @@ def prepare_people_data_validated(people):
         }
         valid_people.append(enriched_person)
     return valid_people, errors
+
